@@ -4,10 +4,11 @@
 	<property file="build_config_ci.ini" />
 	
 	<target name="install-joomla" description="Unpack Joomla.zip copy it to sub domain and install sql file for db">
+		<mkdir dir="/home/fabrikar/public_html/ci/"/>
 		<copy file="${basedir}/fabrik_build/setup/Joomla_3.1.1-Stable-Full_Package.zip" todir="/home/fabrikar/public_html/ci/" />
 		
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}">
-	          <transaction src="db/rebuild.sql"/>
+	          <transaction src="${basedir}/fabrik_build/setup/joomla-ci-install.sql"/>
 	          <classpath>
 	               <path refid="project.class.path"/>
 	          </classpath>
