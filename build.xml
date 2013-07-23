@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="fabrik3-package" default="phpcs-ci">
+<project name="fabrik3-package" default="install-joomla">
+
+	<property file="build_config_ci.ini" />
+	
+	<target name="install-joomla" description="Unpack Joomla.zip copy it to sub domain and install sql file for db">
+		<copy file="${basedir}/fabrik_build/setup/Joomla_3.1.1-Stable-Full_Package.zip" todir="/home/fabrikar/public_html/ci/" />
+		
+		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}">
+	          <transaction src="db/rebuild.sql"/>
+	          <classpath>
+	               <path refid="project.class.path"/>
+	          </classpath>
+	     </sql>
+	</target>
+	
 	<target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
 		<exec executable="phpcs" output="/dev/null">
 			<arg value="--report=checkstyle" />
@@ -7,5 +21,6 @@
 			<arg value="--standard=Joomla" />
 			<arg path="${basedir}/src" />
 		</exec>
+
 	</target>
 </project>
