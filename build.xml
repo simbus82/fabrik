@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="fabrik3-package" default="fabrik.all">
+<project name="fabrik3-package" default="phpcs">
 
 <!--  fabrik.all -->
 	<property file="build_config.ini" />
@@ -24,31 +24,17 @@
 	<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
 
 	<target name="phpcs" description="Ensure Code Style Rules">
-		<if>
-			<equals arg1="${cfg.os}" arg2="unix" />
-			<then>
-			    <exec executable="${phpcs.path}">
-			        <arg line="
-			            --report=checkstyle
-			            --report-file='${basedir}/fabrik_build/logs/checkstyle.xml'
-			            --standard=Joomla
-			            --ignore=*/administrator/components/*
-			            -p
-			            ${basedir}/components/com_fabrik/" />
-			    </exec>
-			</then>
-			<else>
-			    <exec executable="cmd">
-			        <arg line="/c ${phpcs.path}
-			            --report=checkstyle
-			            --report-file='${basedir}/fabrik_build/logs/checkstyle.xml'
-			            --standard=Joomla
-			            --ignore=*\\administrator\\components\\*
-			            -p
-			            ${basedir}/components/com_fabrik/" />
-			    </exec>
-		    </else>
-	    </if>
+	
+		    <exec executable="${phpcs.path}">
+		        <arg line="
+		            --report=checkstyle
+		            --report-file='${basedir}/fabrik_build/logs/checkstyle.xml'
+		            --standard=Joomla
+		            --ignore=*/administrator/components/*
+		            -p
+		            ${basedir}/components/com_fabrik/" />
+		    </exec>
+			
 	</target>
 	
 	<target name="phpdoc" description="Generate API documentation">
