@@ -3,15 +3,7 @@
 --
 -- --------------------------------------------------------
 
-DROP PROCEDURE IF EXISTS `drop_all_tables`;
 
-DELIMITER $$
-CREATE PROCEDURE `drop_all_tables`()
-BEGIN
-
-END $$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 ----
