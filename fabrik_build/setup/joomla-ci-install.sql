@@ -33,7 +33,7 @@ BEGIN
 
     CLOSE _cursor;
     SET FOREIGN_KEY_CHECKS = 1;
-END$$
+END; $$
 
 DELIMITER ;
 
