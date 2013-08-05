@@ -43,7 +43,7 @@
 		
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}">
 			<transaction src="${basedir}/fabrik_build/setup/joomla-ci-fabrik.sql"/>
-			<transaction src="/home/fabrikar/public_html/ci/administrator/components/com_fabrik/sql/install.fabrik.sql"/>
+			<transaction src="/home/fabrikar/public_html/ci/administrator/components/com_fabrik/sql/install.mysql.uft8.sql"/>
 			<classpath>
 				<pathelement location="${basedir}/mysql-connector-java-5.1.26-bin.jar"/>
 			</classpath>
