@@ -34,3 +34,4 @@ BEGIN
     SET FOREIGN_KEY_CHECKS = 1;
 END $$
 
+CALL drop_all_tables()$$
