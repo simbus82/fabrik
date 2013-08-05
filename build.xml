@@ -33,9 +33,9 @@
 	
 	<target name="install-fabrik">
 		<copy todir="/home/fabrikar/public_html/ci/">
-			<fileset dir="${basedir}">
+			<fileset dir="${basedir}/">
 				<exclude name="fabrik_build" />
-				<exculde name="*.ini" />
+				<exclude name="*.ini" />
 				<exclude name="*.xml" />
 				<exclude name="*.jar" />
 			</fileset>
