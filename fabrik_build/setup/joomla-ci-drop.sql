@@ -1,7 +1,4 @@
--- 
--- Drop all previously created tables
---
--- --------------------------------------------------------
+
 
 DROP PROCEDURE IF EXISTS `drop_all_tables`$$
 
