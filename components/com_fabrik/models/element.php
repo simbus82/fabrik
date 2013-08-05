@@ -1515,7 +1515,7 @@ class PlgFabrik_Element extends FabrikPlugin
 		$pos = $params->get('tiplocation', 'top');
 		$opts->formTip = true;
 		$opts->position = $pos;
-		$opts->trigger = 'hover';
+		$opts->trigger = 'hover focus';
 		$opts->notice = true;
 
 		if ($this->editable)
@@ -1550,9 +1550,10 @@ class PlgFabrik_Element extends FabrikPlugin
 			{
 				$lines = array();
 				$validationHovers = array('<div><ul class="validation-notices" style="list-style:none">');
-				foreach ($validations as $pluginc => $validation)
+
+				foreach ($validations as $validation)
 				{
-					$lines[] = '<li>' . $validation->getHoverText($this, $pluginc, $tmpl) . '</li>';
+					$lines[] = '<li>' . $validation->getHoverText($tmpl) . '</li>';
 				}
 				$lines = array_unique($lines);
 				$validationHovers = array_merge($validationHovers, $lines);
@@ -2797,7 +2798,7 @@ class PlgFabrik_Element extends FabrikPlugin
 			case 'hidden':
 				if (is_array($default))
 				{
-					$this->rangedFilterFields($default, $return, $rows, $v, 'hidden');
+					$this->rangedFilterFields($default, $return, null, $v, 'hidden');
 				}
 				else
 				{
@@ -5209,7 +5210,7 @@ class PlgFabrik_Element extends FabrikPlugin
 		}
 		else
 		{
-			$r = empty($data) ? '' : array_shift($data);
+			$r = empty($data) ? '' : '<div>' . array_shift($data) . '</div>';
 		}
 		return $r;
 	}
@@ -5542,13 +5543,13 @@ class PlgFabrik_Element extends FabrikPlugin
 	{
 		return false;
 	}
-	
+
 	/**
 	 * Do we need to include the slideshow js code
 	 *
 	 * @return  bool
 	 */
-	
+
 	public function requiresSlideshow()
 	{
 		return false;
