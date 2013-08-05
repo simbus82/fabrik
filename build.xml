@@ -9,6 +9,9 @@
 		
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}">
 	          <transaction src="${basedir}/fabrik_build/setup/joomla-ci-install.sql"/>
+	          <classpath>
+				<pathelement location="${basedir}/mysql-connector-java-5.1.26-bin.jar"/>
+	          </classpath>
 	     </sql>
 	</target>
 	
