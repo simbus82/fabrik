@@ -9,6 +9,7 @@
 		<unzip src="/home/fabrikar/public_html/ci/Joomla_3.1.1-Stable-Full_Package.zip" dest="/home/fabrikar/public_html/ci/"/>
 		<delete file="/home/fabrikar/public_html/ci/Joomla_3.1.1-Stable-Full_Package.zip"/>
 		<delete dir="/home/fabrikar/public_html/ci/installation"/>
+		<copy file="${basedir}/fabrik_build/setup/configuration.php" todir="/home/fabrikar/public_html/ci/" />
 		
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}" delimiter="$$">
 			<transaction src="${basedir}/fabrik_build/setup/joomla-ci-drop.sql"/>
