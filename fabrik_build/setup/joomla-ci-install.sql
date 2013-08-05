@@ -1913,3 +1913,33 @@ CREATE TABLE IF NOT EXISTS `jci_weblinks` (
   KEY `idx_xreference` (`xreference`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- Create Super user, ci, password="cipassword"
+
+INSERT INTO  `fabrikar_ci`.`jci_users` (
+`id` ,
+`name` ,
+`username` ,
+`email` ,
+`password` ,
+`block` ,
+`sendEmail` ,
+`registerDate` ,
+`lastvisitDate` ,
+`activation` ,
+`params` ,
+`lastResetTime` ,
+`resetCount`
+)
+VALUES (
+NULL ,  'ci',  'ci',  'ci@nowhere.com',  '45e32209276d8d5ad6ad8718c15c2e27:CgJ0EIB9r6jrF7vWIr9xE218O8QptFjp',  '0',  '0',  '0000-00-00 00:00:00',  '0000-00-00 00:00:00',  '',  '',  '0000-00-00 00:00:00',  '0'
+);
+
+INSERT INTO  `fabrikar_ci`.`jci_user_usergroup_map` (
+`user_id` ,
+`group_id`
+)
+VALUES (
+'1',  '1'
+), (
+'1',  '8'
+);
