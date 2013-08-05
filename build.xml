@@ -9,9 +9,6 @@
 		
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.user}" password="${sql.password}">
 	          <transaction src="${basedir}/fabrik_build/setup/joomla-ci-install.sql"/>
-	          <classpath>
-	               <path refid="project.class.path"/>
-	          </classpath>
 	     </sql>
 	</target>
 	
