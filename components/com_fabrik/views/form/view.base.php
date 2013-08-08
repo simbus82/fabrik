@@ -802,7 +802,7 @@ class FabrikViewFormBase extends JViewLegacy
 		if ($this->isMultiPage)
 		{
 			$form->prevButton = '<input type="button" class="btn fabrikPagePrevious button" name="fabrikPagePrevious" value="'
-					. JText::_('COM_FABRIK_PREVIOUS') . '" />';
+					. JText::_('COM_FABRIK_PREV') . '" />';
 			$form->nextButton = '<input type="button" class="btn fabrikPageNext button" name="fabrikPageNext" value="' . JText::_('COM_FABRIK_NEXT')
 			. '" />';
 		}
