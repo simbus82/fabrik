@@ -3210,7 +3210,7 @@ class FabrikFEModelForm extends FabModelForm
 
 	public function _buildQuery($opts = array())
 	{
-		return $this->buildQuery($opts = array());
+		return $this->buildQuery($opts);
 	}
 
 	/**
