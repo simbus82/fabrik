@@ -1168,9 +1168,9 @@ var FbForm = new Class({
 			return;
 		}
 
-		id = _getValidationElId(e, subEl);
+		id = this._getValidationElId(e, subEl);
 		if (typeOf(document.id(id)) === 'null') {
-			fconsole("Fabrik form.js::doElementValidation: Cannot find the field: " + id);
+			fconsole("Fabrik form.js::doElementValidation: Cannot find the field: " + id, e, subEl);
 			return;
 		}
 		if (document.id(id).getProperty('readonly') === true || document.id(id).getProperty('readonly') === 'readonly') {
@@ -1264,7 +1264,7 @@ var FbForm = new Class({
 
 	doElementClearError: function (e, subEl) {
 		// If not doing ajax validation, then clear error messages for a field on same events
-		id = _getValidationElId(e, subEl);
+		id = this._getValidationElId(e, subEl);
 		this.showElementError('', id, true);
 		this.updateMainError();
 	},
