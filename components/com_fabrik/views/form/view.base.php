@@ -437,6 +437,7 @@ class FabrikViewFormBase extends JViewLegacy
 		if (!FabrikHelperHTML::inAjaxLoadedPage())
 		{
 			JText::script('COM_FABRIK_VALIDATING');
+			JText::script('COM_FABRIK_SAVING');
 			JText::script('COM_FABRIK_SUCCESS');
 			JText::script('COM_FABRIK_NO_REPEAT_GROUP_DATA');
 			JText::script('COM_FABRIK_VALIDATION_ERROR');
@@ -802,7 +803,7 @@ class FabrikViewFormBase extends JViewLegacy
 		if ($this->isMultiPage)
 		{
 			$form->prevButton = '<input type="button" class="btn fabrikPagePrevious button" name="fabrikPagePrevious" value="'
-					. JText::_('COM_FABRIK_PREVIOUS') . '" />';
+					. JText::_('COM_FABRIK_PREV') . '" />';
 			$form->nextButton = '<input type="button" class="btn fabrikPageNext button" name="fabrikPageNext" value="' . JText::_('COM_FABRIK_NEXT')
 			. '" />';
 		}
