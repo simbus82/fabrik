@@ -4269,10 +4269,10 @@ class FabrikFEModelForm extends FabModelForm
 								}
 							}
 						} */
-					} // end-else
+					}
 
-				} // end-if is_object($joinTable)
-			} // end-if $groupModel->canRepeat()
+				}
+			}
 
 			// Test failed validated forms, repeat group counts are in request
 			$repeatGroups = $input->get('fabrik_repeat_group', array(), 'array');
@@ -4339,7 +4339,7 @@ class FabrikFEModelForm extends FabModelForm
 					{
 						$elCount++;
 					}
-				} // foreach elementModel
+				}
 				// If its a repeatable group put in subgroup
 				if ($groupModel->canRepeat())
 				{
@@ -4351,7 +4351,7 @@ class FabrikFEModelForm extends FabModelForm
 					}
 					$aSubGroups[] = $aSubGroupElements;
 				}
-			} // for c
+			}
 			$groupModel->randomiseElements($aElements);
 
 			// Style attribute for group columns (need to occur after randomisation
@@ -4403,8 +4403,8 @@ class FabrikFEModelForm extends FabModelForm
 						$this->groupView[$group->name] = $group;
 					}
 				}
-			} // end-if (count($aElements) != 0 && $groupModel->canView() !== false)
-		} // end foreach $groups
+			}
+		}
 		return $this->groupView;
 	}
 
