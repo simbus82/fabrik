@@ -15,8 +15,8 @@ var FbFileUpload = new Class({
 			this.ajaxFolder();
 		}
 
-		this.submitEvent = function (form, json) {
-			this.onSubmit(form);
+		this.submitEvent = function (form, e, btn) {
+			this.onSubmit(form, e, btn);
 		}.bind(this);
 
 		Fabrik.addEvent('fabrik.form.submit.start', this.submitEvent);
@@ -469,11 +469,22 @@ var FbFileUpload = new Class({
 		}
 	},
 
-	onSubmit : function (form) {
+	onSubmit : function (form, e, btn) {
 		if (!this.allUploaded()) {
+			old_e = e;
 			alert(Joomla.JText._('PLG_ELEMENT_FILEUPLOAD_UPLOAD_ALL_FILES'));
-			form.result = false;
-			return false;
+			var uploader = form.formElements.get('fab_junk___ajax_upload').uploader;
+			uploader.bind('UploadComplete', function() {
+				if (this.allUploaded()) {
+					fconsole('Plupload finished: total,uploaded,failed: ' + uploader.files.length + ':' + uploader.total.uploaded + ':' + uploader.total.failed);
+					form.doSubmitAux(old_e, btn);
+				}
+				else {
+					fconsole('Pluploading files: total,uploaded,failed: ' + uploader.files.length + ',' + uploader.total.uploaded + ',' + uploader.total.failed);					
+				}
+			}.bind(this, form));
+			form.result = 'defer';
+			uploader.start();
 		}
 		if (typeOf(this.widget) !== 'null') {
 			this.widget.images.each(function (image, key) {

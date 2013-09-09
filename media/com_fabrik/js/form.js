@@ -41,6 +41,7 @@ var FbForm = new Class({
 		}
 		this.id = id;
 		this.result = true; //set this to false in window.fireEvents to stop current action (eg stop form submission)
+		this.defering = false;
 		this.setOptions(options);
 		this.plugins = this.options.plugins;
 		this.options.pages = $H(this.options.pages);
@@ -1021,7 +1022,30 @@ var FbForm = new Class({
 	},
 
 	doSubmit : function (e, btn) {
+		if (this.defering === true) {
+			this.defering = false;
+			return;
+		}
 		Fabrik.fireEvent('fabrik.form.submit.start', [this, e, btn]);
+		if (this.result === false) {
+			this.result = true;
+			e.stop();
+			// Update global status error
+			this.updateMainError();		
+		}
+		else if (this.result === 'defer') {
+			fconsole('defering submit to fabrik.form.submit.start event');
+			this.defering = true;
+			this.result = true;
+			e.stop();
+		}
+		else {
+			this.doSubmitAux(e, btn);
+		}
+	},
+	
+	doSubmitAux : function (e, btn) {
+		// Fabrik.fireEvent('fabrik.form.submit.start', [this, e, btn]);
 		this.elementsBeforeSubmit(e);
 		if (this.result === false) {
 			this.result = true;
@@ -1168,6 +1192,9 @@ var FbForm = new Class({
 			if (this.options.ajax) {
 				Fabrik.fireEvent('fabrik.form.ajax.submit.end', [this]);
 			}
+		}
+		if (this.defering === true) {
+			this.form.fireEvent('submit', new Event.Mock(this.form, 'submit'))
 		}
 	},
 
